@@ -20,9 +20,9 @@ def home():
             'GET /health': 'Health check'
         },
         'usage_examples': {
-            'POST': 'curl -X POST http://localhost:5000/analyze -H "Content-Type: application/json" -d \'{"text":"I love this!"}\'',
-            'GET': 'curl "http://localhost:5000/analyze?text=I%20love%20this!"',
-            'health': 'curl http://localhost:5000/health'
+            'POST': 'curl -X POST https://your-app.onrender.com/analyze -H "Content-Type: application/json" -d \'{"text":"I love this!"}\'',
+            'GET': 'curl "https://your-app.onrender.com/analyze?text=I%20love%20this!"',
+            'health': 'curl https://your-app.onrender.com/health'
         }
     }), 200
 
@@ -123,19 +123,5 @@ if __name__ == '__main__':
     # Get port from environment variable or default to 5000
     port = int(os.environ.get('PORT', 5000))
     
-    # Get host from environment variable or default to localhost
-    # Use '0.0.0.0' for production environments to accept external connections
-    host = os.environ.get('HOST', '127.0.0.1')
-    
-    # Debug mode based on environment
-    debug = os.environ.get('DEBUG', 'False').lower() == 'true'
-    
-    print(f"Starting Sentiment Analysis API on {host}:{port}")
-    print(f"Debug mode: {debug}")
-    print("Available endpoints:")
-    print("  GET  /          - API information")
-    print("  POST /analyze   - Analyze sentiment from JSON payload")
-    print("  GET  /analyze   - Analyze sentiment from query parameter")
-    print("  GET  /health    - Health check")
-    
-    app.run(host=host, port=port, debug=debug)
+    # Use '0.0.0.0' for production environments
+    app.run(host='0.0.0.0', port=port)

@@ -120,8 +120,6 @@ def health_check():
     }), 200
 
 if __name__ == '__main__':
-    # Get port from environment variable or default to 5000
     port = int(os.environ.get('PORT', 5000))
-    
-    # Use '0.0.0.0' for production environments
+    print(f"Starting server on port {port}")  # Debug line
     app.run(host='0.0.0.0', port=port)
